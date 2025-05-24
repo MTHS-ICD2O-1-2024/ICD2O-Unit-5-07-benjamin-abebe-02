@@ -15,6 +15,17 @@ function myButtonClicked() {
     result += i
   }
 
+  // Save result to localStorage
+  localStorage.setItem("lastSum", result)
+
   // display results
   document.getElementById("answer").innerHTML = "<p>The sum from 1 to " + userNumber + " is: " + result + ".</p>"
+}
+
+// Show last result when page loads
+window.onload = function () {
+  const savedResult = localStorage.getItem("lastSum")
+  if (savedResult !== null) {
+    document.getElementById("answer").innerHTML = "<p>Last saved result: " + savedResult + "</p>"
+  }
 }
